@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import "aos/dist/aos.css";
 import ThemeToggle from "./components/ThemeToggle";
+import BackToHome from "./components/BackToHome";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
 
 export const metadata: Metadata = {
-  title: "FluxLend",
-  description: "FluxLend digital lending platform",
+  title: "NovaCheckout",
+  description: "Customer-facing self-checkout platform for modern retail teams",
 };
 
 export default function RootLayout({
@@ -19,10 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} antialiased`}
+        className={`${manrope.variable} antialiased`}
       >
         {children}
         <ThemeToggle />
+        <BackToHome />
       </body>
     </html>
   );

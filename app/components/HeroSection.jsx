@@ -6,16 +6,16 @@ const HeroSection = () => {
   const [secondaryHovered, setSecondaryHovered] = useState(false);
 
   return (
-    <section className="relative min-h-screen bg-[#0f0f1a] overflow-hidden pt-[72px]">
+    <section className="relative min-h-screen bg-[#0b1f3b] overflow-hidden pt-[72px]">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="https://specta.sterling.ng/images/hero-man-raising-hands.png"
-          alt="Happy customer"
+          src="https://www.lsretail.com/hs-fs/hubfs/hero-homepage.jpg?width=1800&height=1000&name=hero-homepage.jpg"
+          alt="Customer using self-checkout"
           className="w-full h-full object-cover object-right"
         />
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0f0f1a] via-[#0f0f1a]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-gradient)] via-[color-mix(in_oklab,var(--brand-gradient)_80%,transparent)] to-transparent" />
       </div>
 
       {/* Content */}
@@ -27,16 +27,16 @@ const HeroSection = () => {
               data-aos-delay="100"
               className="text-4xl md:text-5xl text-white leading-[1.15] font-light mb-6"
             >
-              Your sure partner
+              Unified, modular
               <br />
-              for stress-free loans in Nigeria
+              self-checkout for modern retail
             </h1>
             <p 
               data-aos="fade-up"
               data-aos-delay="200"
               className="text-lg text-gray-300 mb-10"
             >
-              Get up to <span className="font-semibold">₦5</span> Million with no collateral, guarantors or hidden charges!
+              Eliminate the complexity of separate systems with one platform for kiosk and mobile checkout.
             </p>
             <div 
               data-aos="fade-up"
@@ -44,16 +44,16 @@ const HeroSection = () => {
               className="flex flex-wrap gap-4"
             >
               <a
-                href="#"
-                className={`relative px-8 py-4 bg-[#2563eb] text-white font-medium text-base rounded-full overflow-hidden transition-all duration-300 ${
-                  primaryHovered ? 'shadow-xl shadow-[#2563eb]/40 scale-105' : ''
+                href="/demo"
+                className={`relative px-8 py-4 bg-[#00a3a3] text-white font-medium text-base rounded-full overflow-hidden transition-all duration-300 ${
+                  primaryHovered ? 'shadow-xl shadow-[#00a3a3]/40 scale-105' : ''
                 }`}
                 onMouseEnter={() => setPrimaryHovered(true)}
                 onMouseLeave={() => setPrimaryHovered(false)}
               >
-                <span className={`absolute inset-0 bg-gradient-to-r from-[#3b82f6] to-[#1d4ed8] transition-opacity duration-300 ${primaryHovered ? 'opacity-100' : 'opacity-0'}`}></span>
+                <span className={`absolute inset-0 bg-gradient-to-r from-[var(--brand-gradient)] to-[var(--brand-gradient)] transition-opacity duration-300 ${primaryHovered ? 'opacity-100' : 'opacity-0'}`}></span>
                 <span className="relative z-10 flex items-center gap-2">
-                  Get started with FluxLend
+                  Request a demo
                   <svg 
                     className={`w-5 h-5 transition-transform duration-300 ${primaryHovered ? 'translate-x-1' : ''}`} 
                     fill="none" 
@@ -65,17 +65,17 @@ const HeroSection = () => {
                 </span>
               </a>
               <a
-                href="#products"
+                href="/solutions"
                 className={`px-8 py-4 bg-transparent text-white font-medium text-base rounded-full border-2 transition-all duration-300 ${
                   secondaryHovered 
-                    ? 'bg-white text-[#0f0f1a] border-white scale-105' 
+                    ? 'bg-white text-[#0b1f3b] border-white scale-105' 
                     : 'border-white/80 hover:bg-white/10'
                 }`}
                 onMouseEnter={() => setSecondaryHovered(true)}
                 onMouseLeave={() => setSecondaryHovered(false)}
               >
                 <span className="flex items-center gap-2">
-                  Learn More
+                  Explore the suite
                   <svg 
                     className={`w-5 h-5 transition-transform duration-300 ${secondaryHovered ? 'translate-y-1' : ''}`} 
                     fill="none" 
@@ -106,5 +106,6 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
 
 

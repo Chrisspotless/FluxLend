@@ -2,26 +2,49 @@
 import React, { useState, useEffect } from 'react';
 import AOS from 'aos';
 import Link from 'next/link';
-import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
+const IconChevronDown = ({ className }) => (
+  <svg className={className} viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <path d="M5 7l5 6 5-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const IconMenu = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
+const IconClose = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
+const IconArrowRight = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Product', href: '#', hasDropdown: true },
-  { label: 'FAQ/Guide', href: '#faq' },
-  { label: 'Data Privacy Policy', href: '#' },
-  { label: 'Cookie Policy', href: '#' },
+  { label: 'Menu', href: '/admin/items' },
+  { label: 'Solutions', href: '/solutions', hasDropdown: true },
+  { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Industries', href: '/industries' },
+  { label: 'FAQ', href: '#faq' },
+  { label: 'Security', href: '#security' },
 ];
 
 const products = [
   {
-    id: 'xtreme',
-    name: 'FluxLend Xtreme',
-    description: 'Quick loans of up to N2 million to achieve your personal and business goals.',
+    id: 'kiosk',
+    name: 'Self-Checkout Kiosk',
+    description: 'Fast, guided checkout with bagging scale and assisted mode for every store size.',
   },
   {
-    id: 'basic',
-    name: 'FluxLend Basic',
-    description: 'Community lending of up to N5 million for salary earners who need an extra boost.',
+    id: 'scan-go',
+    name: 'Scan & Go Mobile',
+    description: 'Shopper-led scanning with in-app pay and exit validation to reduce queues.',
   },
 ];
 
@@ -62,9 +85,9 @@ const Header = () => {
         <div className="flex items-center justify-between h-[72px]">
           <Link href="/" className="flex items-center group">
             <div className="flex items-center gap-1">
-              <span className="text-2xl font-bold text-[#1a1a2e] group-hover:text-[#2563eb] transition-colors">Flux</span>
-              <span className="text-2xl font-bold text-[#2563eb]">Lend</span>
-              <span className="w-2 h-2 rounded-full bg-[#2563eb] ml-1 -mt-3 group-hover:scale-125 transition-transform"></span>
+              <span className="text-2xl font-bold text-[#0b1f3b] group-hover:text-[#00a3a3] transition-colors">Nova</span>
+              <span className="text-2xl font-bold text-[#00a3a3]">Checkout</span>
+              <span className="w-2 h-2 rounded-full bg-[#00a3a3] ml-1 -mt-3 group-hover:scale-125 transition-transform"></span>
             </div>
           </Link>
 
@@ -73,17 +96,17 @@ const Header = () => {
               <div key={link.label} className="relative">
                 {link.hasDropdown ? (
                   <button
-                    className="flex items-center gap-1 text-gray-700 hover:text-[#2563eb] font-medium text-[15px] transition-colors group"
+                    className="flex items-center gap-1 text-gray-700 hover:text-[#00a3a3] font-medium text-[15px] transition-colors group"
                     onMouseEnter={() => setIsProductDropdownOpen(true)}
                     onMouseLeave={() => setIsProductDropdownOpen(false)}
                   >
                     {link.label}
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isProductDropdownOpen ? 'rotate-180' : ''}`} />
+                    <IconChevronDown className={`w-4 h-4 transition-transform duration-300 ${isProductDropdownOpen ? 'rotate-180' : ''}`} />
                   </button>
                 ) : (
                   <a
                     href={link.href}
-                    className="relative text-gray-700 hover:text-[#2563eb] font-medium text-[15px] transition-colors after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-[#2563eb] after:transition-all hover:after:w-full"
+                    className="relative text-gray-700 hover:text-[#00a3a3] font-medium text-[15px] transition-colors after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-[#00a3a3] after:transition-all hover:after:w-full"
                   >
                     {link.label}
                   </a>
@@ -97,12 +120,12 @@ const Header = () => {
                     {products.map((product) => (
                       <a
                         key={product.id}
-                        href={`#${product.id}`}
+                        href={`/solutions/${product.id}`}
                         className="block px-4 py-3 hover:bg-blue-50 transition-colors group/item"
                       >
                         <div className="flex items-center justify-between">
-                          <div className="font-semibold text-gray-900 group-hover/item:text-[#2563eb] transition-colors">{product.name}</div>
-                          <ArrowRight className="w-4 h-4 text-gray-400 opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-1 transition-all" />
+                          <div className="font-semibold text-gray-900 group-hover/item:text-[#00a3a3] transition-colors">{product.name}</div>
+                          <IconArrowRight className="w-4 h-4 text-gray-400 opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-1 transition-all" />
                         </div>
                         <div className="text-sm text-gray-500 mt-1">{product.description.substring(0, 50)}...</div>
                       </a>
@@ -114,32 +137,32 @@ const Header = () => {
           </nav>
 
           <div className="hidden lg:flex items-center gap-3">
-            <a
-              href="#"
-              className={`flex items-center gap-2 px-5 py-2.5 font-medium text-[15px] border rounded-full transition-all duration-300 ${
-                createAccountHovered
-                  ? 'border-[#2563eb] text-[#2563eb] bg-blue-50 scale-105'
-                  : 'border-gray-200 text-gray-700 hover:bg-gray-50'
-              }`}
-              onMouseEnter={() => setCreateAccountHovered(true)}
-              onMouseLeave={() => setCreateAccountHovered(false)}
-            >
-              Create Free Account
-              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${createAccountHovered ? 'rotate-[-90deg]' : '-rotate-90'}`} />
-            </a>
-            <a
-              href="#"
-              className={`px-6 py-2.5 bg-[#2563eb] text-white font-medium text-[15px] rounded-full transition-all duration-300 ${
-                loginHovered
-                  ? 'bg-[#1d4ed8] scale-105 shadow-lg shadow-[#2563eb]/30'
-                  : 'hover:bg-[#1e40af]'
-              }`}
-              onMouseEnter={() => setLoginHovered(true)}
-              onMouseLeave={() => setLoginHovered(false)}
-            >
-              Login
-            </a>
-          </div>
+              <a
+                href="/demo"
+                className={`flex items-center gap-2 px-5 py-2.5 font-medium text-[15px] border rounded-full transition-all duration-300 ${
+                  createAccountHovered
+                    ? 'border-[#00a3a3] text-[#00a3a3] bg-blue-50 scale-105'
+                    : 'border-gray-200 text-gray-700 hover:bg-gray-50'
+                }`}
+                onMouseEnter={() => setCreateAccountHovered(true)}
+                onMouseLeave={() => setCreateAccountHovered(false)}
+              >
+                Talk to our experts
+                <IconChevronDown className={`w-4 h-4 transition-transform duration-300 ${createAccountHovered ? 'rotate-[-90deg]' : '-rotate-90'}`} />
+              </a>
+              <a
+                href="/demo"
+                className={`px-6 py-2.5 bg-[#00a3a3] text-white font-medium text-[15px] rounded-full transition-all duration-300 ${
+                  loginHovered
+                    ? 'bg-[#007a7a] scale-105 shadow-lg shadow-[#00a3a3]/30'
+                    : 'hover:bg-[#006b6b]'
+                }`}
+                onMouseEnter={() => setLoginHovered(true)}
+                onMouseLeave={() => setLoginHovered(false)}
+              >
+                Request a demo
+              </a>
+            </div>
 
           <button
             className="lg:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-300"
@@ -149,7 +172,7 @@ const Header = () => {
             aria-label="Toggle navigation menu"
           >
             <span className={`block transition-transform duration-300 ${isMenuOpen ? 'rotate-90' : 'rotate-0'}`}>
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? <IconClose className="w-6 h-6" /> : <IconMenu className="w-6 h-6" />}
             </span>
           </button>
         </div>
@@ -167,7 +190,7 @@ const Header = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-gray-700 font-medium text-[15px] py-2 hover:text-[#2563eb] transition-colors"
+                className="text-gray-700 font-medium text-[15px] py-2 hover:text-[#00a3a3] transition-colors"
                 onClick={() => setIsMenuOpen(false)}
                 data-aos="fade-down"
                 data-aos-delay={80 + index * 40}
@@ -177,16 +200,16 @@ const Header = () => {
             ))}
             <div className="flex flex-col gap-3 pt-4 border-t border-gray-100" data-aos="fade-up" data-aos-delay="220">
               <a
-                href="#"
+                href="/demo"
                 className="w-full text-center px-5 py-2.5 text-gray-700 font-medium text-[15px] border border-gray-200 rounded-full hover:bg-gray-50 transition-colors"
               >
-                Create Free Account
+                Talk to our experts
               </a>
               <a
-                href="#"
-                className="w-full text-center px-6 py-2.5 bg-[#2563eb] text-white font-medium text-[15px] rounded-full hover:bg-[#1e40af] transition-colors"
+                href="/demo"
+                className="w-full text-center px-6 py-2.5 bg-[#00a3a3] text-white font-medium text-[15px] rounded-full hover:bg-[#006b6b] transition-colors"
               >
-                Login
+                Request a demo
               </a>
             </div>
           </nav>
@@ -197,5 +220,6 @@ const Header = () => {
 };
 
 export default Header;
+
 
 

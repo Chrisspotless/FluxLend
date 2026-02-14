@@ -1,21 +1,26 @@
 "use client"
 import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+const IconArrowRight = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 const products = [
   {
-    id: 'xtreme',
-    name: 'FluxLend Xtreme',
-    image: 'https://specta.sterling.ng/images/lady-with-plenty-hair.png',
-    description: 'Quick loans of up to ₦2 million to achieve your personal and business goals.',
-    buttonText: 'Continue With FluxLend Xtreme',
+    id: 'kiosk',
+    name: 'Self-Checkout Kiosk',
+    image: 'https://www.lsretail.com/hs-fs/hubfs/ft-hero-sales-woman-with-tablet-POS.jpg?width=1600&height=900&name=ft-hero-sales-woman-with-tablet-POS.jpg',
+    description: 'A guided kiosk experience with bagging scale support, age checks, and fast payment.',
+    buttonText: 'See Kiosk in Action',
   },
   {
-    id: 'basic',
-    name: 'FluxLend Basic',
-    image: 'https://specta.sterling.ng/images/prismic-tower.png',
-    description: 'Community lending of up to ₦5 million for salary earners who need an extra boost.',
-    buttonText: 'Continue With FluxLend Basic',
+    id: 'scan-go',
+    name: 'Scan & Go Mobile',
+    image: 'https://www.lsretail.com/hs-fs/hubfs/ft-hero-complex-commerce-system.jpg?width=1600&height=900&name=ft-hero-complex-commerce-system.jpg',
+    description: 'In-app scanning and payment so shoppers can skip the line and exit fast.',
+    buttonText: 'See Scan & Go in Action',
   },
 ];
 
@@ -53,24 +58,25 @@ const ProductCard = ({ product, index }) => {
         <p className="text-gray-600 text-base mb-6 leading-relaxed">
           {product.description}
         </p>
-        <button
-          className={`group/btn inline-flex items-center gap-2 px-6 py-3 bg-[#2563eb] text-white font-medium text-sm rounded-full transition-all duration-300 ${
+        <Link
+          href={`/solutions/${product.id}`}
+          className={`group/btn inline-flex items-center gap-2 px-6 py-3 bg-[#00a3a3] text-white font-medium text-sm rounded-full transition-all duration-300 ${
             isHovered 
-              ? 'shadow-lg shadow-[#2563eb]/30 scale-105 bg-[#1e40af]' 
+              ? 'shadow-lg shadow-[#00a3a3]/30 scale-105 bg-[#006b6b]' 
               : ''
           }`}
         >
           {product.buttonText}
-          <ArrowRight className={`w-4 h-4 transition-transform duration-300 ${
+          <IconArrowRight className={`w-4 h-4 transition-transform duration-300 ${
             isHovered ? 'translate-x-1' : ''
           }`} />
-        </button>
+        </Link>
       </div>
     </div>
   );
 };
 
-const ProductShowcase = () => {
+const SolutionsShowcase = () => {
   return (
     <section id="products" className="py-20 lg:py-28 bg-white">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
@@ -80,19 +86,19 @@ const ProductShowcase = () => {
             data-aos="fade-right"
             className="text-sm font-semibold text-gray-600 tracking-wide mb-4"
           >
-            Product Showcase
+            Unified solutions
           </p>
           <h2 
             data-aos="fade-right"
             data-aos-delay="100"
             className="text-3xl md:text-4xl lg:text-[44px] text-gray-900 font-light leading-tight"
           >
-            Welcome to the
+            One platform for
             <br />
             <span className="relative">
-              FluxVerse
+              self-checkout at scale
               <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
-                <path d="M0 4C50 0 150 8 200 4" stroke="#2563eb" strokeWidth="2" strokeLinecap="round"/>
+                <path d="M0 4C50 0 150 8 200 4" stroke="#00a3a3" strokeWidth="2" strokeLinecap="round"/>
               </svg>
             </span>
           </h2>
@@ -109,6 +115,8 @@ const ProductShowcase = () => {
   );
 };
 
-export default ProductShowcase;
+export default SolutionsShowcase;
+
+
 
 

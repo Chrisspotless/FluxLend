@@ -1,27 +1,31 @@
 "use client"
 import React, { useState } from 'react';
-import { Plus } from 'lucide-react';
+const IconPlus = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
 
 const faqsData = [
   {
-    question: 'What is FluxLend?',
-    answer: 'FluxLend is a digital lending platform powered by Sterling Bank in Nigeria. It allows users to access loans quickly without collateral, paperwork, or visiting a bank branch.',
+    question: 'What is NovaCheckout?',
+    answer: 'NovaCheckout is a customer-facing self-checkout experience for grocery, convenience, and specialty retail stores.',
   },
   {
-    question: 'How long has FluxLend been in existence?',
-    answer: 'FluxLend has been operating since 2018, providing quick and easy loans to Nigerians.',
+    question: 'Do customers need to download an app?',
+    answer: 'No. Shoppers can use the kiosk without an app, and Scan & Go is optional for mobile-first stores.',
   },
   {
-    question: 'How many product variants does FluxLend have?',
-    answer: 'FluxLend has two main product variants: FluxLend Xtreme for personal loans up to ₦2 million and FluxLend Basic for salary earners up to ₦5 million.',
+    question: 'How does loss prevention work?',
+    answer: 'NovaCheckout uses smart weight verification, prompts for high-risk items, and attendant assist flows to keep baskets accurate.',
   },
   {
-    question: 'What makes FluxLend different from other lenders?',
-    answer: 'FluxLend offers no collateral, no guarantors, no hidden charges, and quick disbursement. It\'s powered by Sterling Bank, ensuring reliability and trust.',
+    question: 'Can it integrate with our POS and catalog?',
+    answer: 'Yes. We connect to your product catalog, prices, and promotions with standard retail integrations.',
   },
   {
-    question: 'Through what channels can I access FluxLend?',
-    answer: 'You can access FluxLend through the web platform or mobile app, available on both iOS and Android.',
+    question: 'What payment methods are supported?',
+    answer: 'Tap, chip, mobile wallets, store credit, and digital receipts are supported out of the box.',
   },
 ];
 
@@ -31,7 +35,7 @@ const FAQItem = ({ faq, index, isOpen, onToggle }) => {
       data-aos="fade-up"
       data-aos-delay={index * 50}
       className={`border rounded-xl overflow-hidden transition-all duration-300 ${
-        isOpen ? 'border-[#2563eb] shadow-lg' : 'border-gray-200 hover:border-gray-300'
+        isOpen ? 'border-[#00a3a3] shadow-lg' : 'border-gray-200 hover:border-gray-300'
       }`}
     >
       <button
@@ -41,14 +45,14 @@ const FAQItem = ({ faq, index, isOpen, onToggle }) => {
         }`}
       >
         <span className={`font-medium text-base pr-4 transition-colors ${
-          isOpen ? 'text-[#2563eb]' : 'text-gray-900'
+          isOpen ? 'text-[#00a3a3]' : 'text-gray-900'
         }`}>
           {faq.question}
         </span>
         <span className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-500 ${
-          isOpen ? 'bg-[#2563eb] rotate-45' : 'bg-gray-100 hover:bg-gray-200'
+          isOpen ? 'bg-[#00a3a3] rotate-45' : 'bg-gray-100 hover:bg-gray-200'
         }`}>
-          <Plus className={`w-4 h-4 transition-colors ${
+          <IconPlus className={`w-4 h-4 transition-colors ${
             isOpen ? 'text-white' : 'text-gray-600'
           }`} />
         </span>
@@ -106,5 +110,7 @@ const FAQ = () => {
 };
 
 export default FAQ;
+
+
 
 

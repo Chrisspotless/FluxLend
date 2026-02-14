@@ -1,34 +1,38 @@
 "use client"
 import React, { useState } from 'react';
-import { ChevronRight } from 'lucide-react';
+const IconChevronRight = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
-const loanFeatures = [
+const checkoutFeatures = [
   {
-    id: 'credit-score',
-    title: 'Credit Score',
-    description: 'Check your credit score to understand your eligibility.',
+    id: 'guided-scan',
+    title: 'Guided Scanning',
+    description: 'On-screen prompts keep scanning accurate and easy for first-time shoppers.',
   },
   {
-    id: 'interest-rates',
-    title: 'Interest Rates',
-    description: 'Favourable option rates for you and the family.',
+    id: 'assisted-mode',
+    title: 'Assisted Mode',
+    description: 'Attendants can approve age-restricted items or overrides in seconds.',
   },
   {
-    id: 'loan-preference',
-    title: 'Loan Preference',
-    description: 'Choose your preferred loan amount and tenure.',
+    id: 'smart-bagging',
+    title: 'Smart Bagging',
+    description: 'Weight verification catches mis-scans without interrupting the flow.',
   },
   {
-    id: 'web-mobile',
-    title: 'Web & Mobile',
-    description: 'Access FluxLend on web or mobile for convenience.',
+    id: 'receipts',
+    title: 'Instant Receipts',
+    description: 'Send digital receipts via SMS or email and support printed receipts when needed.',
   },
 ];
 
-const PersonalLoans = () => {
-  const [activeTab, setActiveTab] = useState('personal');
-  const [activeFeature, setActiveFeature] = useState('interest-rates');
-  const [creditScore, setCreditScore] = useState(720);
+const CheckoutFeatures = () => {
+  const [activeTab, setActiveTab] = useState('kiosk');
+  const [activeFeature, setActiveFeature] = useState('guided-scan');
+  const [scanScore, setScanScore] = useState(98);
 
   return (
     <section className="py-20 lg:py-28 bg-gray-50">
@@ -39,24 +43,24 @@ const PersonalLoans = () => {
           className="flex gap-4 mb-12"
         >
           <button
-            onClick={() => setActiveTab('personal')}
+            onClick={() => setActiveTab('kiosk')}
             className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-              activeTab === 'personal'
+              activeTab === 'kiosk'
                 ? 'bg-white text-gray-900 shadow-lg scale-105'
                 : 'text-gray-500 hover:text-gray-700 hover:bg-white/50'
             }`}
           >
-            Personal Loans
+            Kiosk Checkout
           </button>
           <button
-            onClick={() => setActiveTab('credit')}
+            onClick={() => setActiveTab('scan-go')}
             className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-              activeTab === 'credit'
+              activeTab === 'scan-go'
                 ? 'bg-white text-gray-900 shadow-lg scale-105'
                 : 'text-gray-500 hover:text-gray-700 hover:bg-white/50'
             }`}
           >
-            Know your Credit Score
+            Scan & Go Mobile
           </button>
         </div>
 
@@ -65,18 +69,18 @@ const PersonalLoans = () => {
           {/* Left - Text Content */}
           <div data-aos="fade-right">
             <p className="text-sm font-semibold text-gray-500 tracking-wide mb-3">
-              FluxLend Xtreme
+              NovaCheckout platform
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-[40px] text-gray-900 font-semibold leading-tight mb-6">
-              Get loans for your personal financial needs
+              Empower customers with guided, secure self-service
             </h2>
             <p className="text-gray-600 text-lg mb-10 leading-relaxed">
-              Skip the long process and get the loan you need with FluxLend Xtreme: no guarantor, no collateral, and no paperwork needed.
+              Combine kiosks and Scan & Go to deliver a consistent, enterprise-grade checkout experience.
             </p>
 
             {/* Feature Accordion */}
             <div className="space-y-0">
-              {loanFeatures.map((feature, index) => (
+              {checkoutFeatures.map((feature, index) => (
                 <button
                   key={feature.id}
                   onClick={() => setActiveFeature(feature.id)}
@@ -84,7 +88,7 @@ const PersonalLoans = () => {
                   data-aos-delay={index * 100}
                   className={`w-full text-left py-4 border-l-4 pl-6 transition-all duration-300 group ${
                     activeFeature === feature.id
-                      ? 'border-[#2563eb] bg-white/50'
+                      ? 'border-[#00a3a3] bg-white/50'
                       : 'border-transparent hover:border-gray-300 hover:bg-white/30'
                   }`}
                 >
@@ -96,8 +100,8 @@ const PersonalLoans = () => {
                     >
                       {feature.title}
                     </h4>
-                    <ChevronRight className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${
-                      activeFeature === feature.id ? 'rotate-90 text-[#2563eb]' : 'group-hover:translate-x-1'
+                    <IconChevronRight className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${
+                      activeFeature === feature.id ? 'rotate-90 text-[#00a3a3]' : 'group-hover:translate-x-1'
                     }`} />
                   </div>
                   <div className={`overflow-hidden transition-all duration-300 ${
@@ -112,9 +116,9 @@ const PersonalLoans = () => {
             </div>
           </div>
 
-          {/* Right - Credit Score Visual */}
+          {/* Right - Scan Accuracy Visual */}
           <div data-aos="fade-left" className="relative">
-            {/* Credit Score Card */}
+            {/* Scan Accuracy Card */}
             <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md mx-auto hover:shadow-2xl transition-shadow duration-300">
               {/* Gauge */}
               <div className="relative w-64 h-32 mx-auto mb-6">
@@ -169,31 +173,31 @@ const PersonalLoans = () => {
                     y1="100"
                     x2="155"
                     y2="50"
-                    stroke="#1a1a2e"
+                    stroke="#0b1f3b"
                     strokeWidth="3"
                     strokeLinecap="round"
                     className="origin-bottom transition-transform duration-700"
                     style={{ transformOrigin: '100px 100px' }}
                   />
-                  <circle cx="100" cy="100" r="8" fill="#1a1a2e" />
+                  <circle cx="100" cy="100" r="8" fill="#0b1f3b" />
                 </svg>
                 {/* Score */}
                 <div className="absolute inset-0 flex flex-col items-center justify-end pb-2">
-                  <span className="text-4xl font-bold text-gray-900">{creditScore}</span>
+                  <span className="text-4xl font-bold text-gray-900">{scanScore}</span>
                   <span className="text-xs text-green-500 flex items-center gap-1 mt-1">
                     <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    Good standing
+                    Excellent
                   </span>
                 </div>
               </div>
               {/* Scale Labels */}
               <div className="flex justify-between text-xs text-gray-400 px-4">
                 <span>0</span>
-                <span>720+</span>
+                <span>100</span>
               </div>
             </div>
 
-            {/* Loan Info Card */}
+            {/* Checkout Summary Card */}
             <div 
               data-aos="fade-up"
               data-aos-delay="200"
@@ -201,9 +205,9 @@ const PersonalLoans = () => {
             >
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <p className="text-xs text-gray-500">Get Loans Up To</p>
-                  <p className="text-xl font-bold text-gray-900">₦5 Million Naira</p>
-                  <p className="text-xs text-gray-400">Loan Disbursed: ₦5,000,000</p>
+                  <p className="text-xs text-gray-500">Average Checkout Time</p>
+                  <p className="text-xl font-bold text-gray-900">1:42 mins</p>
+                  <p className="text-xs text-gray-400">Baskets per hour: 42</p>
                 </div>
                 <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center animate-pulse">
                   <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -215,21 +219,20 @@ const PersonalLoans = () => {
                 <div className="flex-1">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors cursor-pointer">
-                      <p className="text-lg font-bold text-gray-900">3.2%</p>
-                      <p className="text-xs text-gray-500">Interest Rate</p>
+                      <p className="text-lg font-bold text-gray-900">96%</p>
+                      <p className="text-xs text-gray-500">Issue-Free Checkouts</p>
                     </div>
                     <div className="bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors cursor-pointer">
-                      <p className="text-sm font-semibold text-gray-900">Choose repayment</p>
-                      <p className="text-xs text-gray-500">Next Repayment & Amount</p>
+                      <p className="text-sm font-semibold text-gray-900">Assistance in 18s</p>
+                      <p className="text-xs text-gray-500">Avg. attendant response</p>
                     </div>
                   </div>
                 </div>
                 <div className="flex-shrink-0">
                   <img
-                    src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png"
-                    alt="Money"
-                    className="w-20 h-16 object-contain animate-bounce"
-                    style={{ animationDuration: '2s' }}
+                    src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=300&q=80"
+                    alt="Checkout summary"
+                    className="w-20 h-16 object-cover rounded-lg"
                   />
                 </div>
               </div>
@@ -241,6 +244,7 @@ const PersonalLoans = () => {
   );
 };
 
-export default PersonalLoans;
+export default CheckoutFeatures;
+
 
 

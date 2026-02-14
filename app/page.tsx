@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
-import Benefits from "./components/Benefits";
+import HowItWorks from "./components/HowItWorks";
+import IndustriesStrip from "./components/IndustriesStrip";
 import FAQ from "./components/FAQ";
-import PersonalLoans from "./components/PersonalLoans";
-import WhyFluxLend from "./components/WhyFluxLend";
-import ProductShowcase from "./components/ProductShowcase";
+import CheckoutFeatures from "./components/CheckoutFeatures";
+import TrustAndSecurity from "./components/TrustAndSecurity";
+import SolutionsShowcase from "./components/SolutionsShowcase";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -13,11 +14,12 @@ export default function Home() {
     <div className="">
       <Header />
       <HeroSection />
-      <Benefits />
+      <HowItWorks />
+      <IndustriesStrip />
       <FAQ/>
-      <PersonalLoans />
-      <WhyFluxLend />
-      <ProductShowcase />
+      <CheckoutFeatures />
+      <TrustAndSecurity />
+      <SolutionsShowcase />
       <Footer/>
     </div>
   );
